@@ -202,6 +202,7 @@ body {
         <div class="button-container">
             <button id="startBtn" class="button">Get Keys</button>
             <button id="copyAllBtn" class="button hidden">Copy All Keys</button>
+            <button id="copyAllBtn" class="button">Copy All Keys</button>
         </div>
         <div id="keyContainer" class="key-container hidden">
             <div id="keysList"></div>
@@ -209,10 +210,6 @@ body {
         <div class="progress-container hidden">
             <div id="progressBar" class="progress-bar"></div>
             <span id="progressText" class="progress-text">0%</span>
-            <div class="button-container">
-            <button id="startBtn" class="button">Get Keys</button>
-            <button id="copyAllBtn" class="button">Copy All Keys</button>
-        </div>
         </div>
     </div>
     <div class="footer-buttons">
@@ -222,7 +219,6 @@ body {
         <a href="https://t.me/medhanye7" target="_blank">
             <button class="footer-button">Admin</button>
         </a>
-        
     </div>
     <script>
         const games = {
@@ -406,7 +402,7 @@ body {
                 const progressInterval = setInterval(updateProgress, 1000);
 
                 const tasks = [];
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) {
                     tasks.push((async (index) => {
                         try {
                             let token = await loginClient(currentGameNumber);
