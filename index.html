@@ -199,11 +199,7 @@ body {
             <button class="game-button" data-game="5">Merge Away</button>
             <button class="game-button" data-game="6">Twerk Race</button>
         </div>
-       <div class="button-container">
-            <button id="startBtn" class="button">Get Keys</button>
-            <button id="copyAllBtn" class="button hidden">Copy All Keys</button>
-            <button id="copyAllBtn" class="button">Copy All Keys</button>
-        </div>
+        
         <div id="keyContainer" class="key-container hidden">
             <div id="keysList"></div>
         </div>
@@ -220,19 +216,10 @@ body {
             <button class="footer-button">Admin</button>
         </a>
     </div>
-     <div class="button-container">
+    <div class="button-container">
             <button id="startBtn" class="button">Get Keys</button>
             <button id="copyAllBtn" class="button hidden">Copy All Keys</button>
-            <button id="copyAllBtn" class="button">Copy All Keys</button>
         </div>
-        <div id="keyContainer" class="key-container hidden">
-            <div id="keysList"></div>
-        </div>
-        <div class="progress-container hidden">
-            <div id="progressBar" class="progress-bar"></div>
-            <span id="progressText" class="progress-text">0%</span>
-        </div>
-    </div>
     <script>
         const games = {
             1: {
@@ -415,7 +402,7 @@ body {
                 const progressInterval = setInterval(updateProgress, 1000);
 
                 const tasks = [];
-                for (let i = 0; i < 30; i++) {
+                for (let i = 0; i < 50; i++) {
                     tasks.push((async (index) => {
                         try {
                             let token = await loginClient(currentGameNumber);
