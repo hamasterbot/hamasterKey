@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">TIGRAYTECHC</div>
+        <div class="header">KillerUK</div>
         <div class="header">Hamster Key Generator</div>
         <div class="game-buttons">
             <button class="game-button" data-game="1">Riding Extreme 3D</button>
@@ -31,10 +31,10 @@
         </div>
     </div>
     <div class="footer-buttons">
-        <a href="https://t.me/tigraytechc" target="_blank">
+        <a href="https://t.me/hamster_key_v1" target="_blank">
             <button class="footer-button">Channel</button>
         </a>
-        <a href="https://t.me/medhanye7" target="_blank">
+        <a href="https://t.me/hamster_key_v1" target="_blank">
             <button class="footer-button">Admin</button>
         </a>
     </div>
@@ -220,7 +220,7 @@
                 const progressInterval = setInterval(updateProgress, 1000);
 
                 const tasks = [];
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) {
                     tasks.push((async (index) => {
                         try {
                             let token = await loginClient(currentGameNumber);
@@ -231,10 +231,10 @@
                             keyDiv.innerHTML = `
                                 <input type="text" value="${promoCode}" readonly />
                                 <button class="copyKeyBtn" data-clipboard-text="${promoCode}">Copy</button>
-                        `;
+                            `;
                             keysList.appendChild(keyDiv);
-                        } 
-                            
+                        } catch (error) {
+                            console.error('Error:', error.message);
                         }
                     })(i));
                 }
