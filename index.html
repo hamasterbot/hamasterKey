@@ -25,7 +25,7 @@ body {
     box-sizing: border-box;
 }
 
-. container {
+.container {
     background: rgba(43, 43, 56, 0.9); /* Увеличенная прозрачность */
     border-radius: 16px;
     box-shadow: 5px 5px 10px #1a1a23, -5px -5px 10px #30303b;
@@ -109,18 +109,51 @@ body {
     background-color: #005a56;
 }
 
-. key-container {
+.key-container {
     margin-top: 20px;
     width: 100%;
 }
 
+.key-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #37374a;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
 
+.key-item input {
+    flex-grow: 1;
+    margin: 8px;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 14px; /* Уменьшенный размер шрифта */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-.KeyBtn:hover {
+. copyKeyBtn {
+    background-color: #008075;
+    color: white;
+    border: none;
+    padding: 8px; /* Уменьшенный отступ */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px; /* Уменьшенный размер шрифта */
+    margin-left: 5px;
+    transition: background-color 0.3s;
+}
+
+. copyKeyBtn:hover {
     background-color: #005e56;
 }
 
-
+.hidden {
+    display: none;
+}
 
 .footer-buttons {
     display: flex;
@@ -149,7 +182,7 @@ body {
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap; /* Разрешаем перенос кнопок */
 }
     </style>
