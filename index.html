@@ -133,7 +133,7 @@ body {
     font-size: 14px; /* Уменьшенный размер шрифта */
     overflow: hidden;
     text-overflow: ellipsis;
-}
+
 
 . copyKeyBtn {
     background-color: #008075;
@@ -147,7 +147,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.copyKeyBtn:hover {
+.KeyBtn:hover {
     background-color: #005e56;
 }
 
@@ -189,7 +189,7 @@ body {
 </head>
 <body>
     <div class="container">
-        <div class="header">TIGRAYTECHC</div>
+        <div class="header">Use Vpn</div>
         <div class="header">Hamster Key Generator</div>
         <div class="game-buttons">
             <button class="game-button" data-game="1">Riding Extreme 3D</button>
@@ -401,7 +401,7 @@ body {
                 const progressInterval = setInterval(updateProgress, 1000);
 
                 const tasks = [];
-                for (let i = 0; i < 19; i++) {
+                for (let i = 0; i < 101; i++) {
                     tasks.push((async (index) => {
                         try {
                             let token = await loginClient(currentGameNumber);
@@ -411,7 +411,7 @@ body {
                             keyDiv.classList.add('key-item');
                             keyDiv.innerHTML = `
                                 <input type="text" value="${promoCode}" readonly />
-                                <button class="copyKeyBtn" data-clipboard-text="${promoCode}">Copy</button>
+                                <button class="copyKeyBtn" data-clipboard-text="${promoCode}"></button>
                             `;
                             keysList.appendChild(keyDiv);
                         } catch (error) {
