@@ -4,188 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quietly Key Gen</title>
-    <style>
-        html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #1f2636;
-    background: url('icon.png') no-repeat center center fixed;
-    background-size: cover;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.container {
-    background: rgba(43, 43, 56, 0.9); /* Увеличенная прозрачность */
-    border-radius: 16px;
-    box-shadow: 5px 5px 10px #1a1a23, -5px -5px 10px #30303b;
-    padding: 20px;
-    width: 90%; /* Увеличенная ширина для мобильных */
-    max-width: 600px; /* Увеличенная ширина для десктопов */
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.header {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 20px; /* Уменьшенный размер шрифта для заголовка */
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.progress-container {
-    width: 100%;
-    max-width: 100%; /* Уменьшена ширина для мобильных */
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.progress-bar {
-    height: 15px; /* Уменьшенная высота полосы прогресса */
-    background-color: #ff8c00;
-    border-radius: 4px;
-    transition: width 0.3s;
-}
-
-.progress-text {
-    margin-top: 5px; /* Уменьшенное расстояние под полосой прогресса */
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.game-buttons {
-    display: flex;
-    flex-wrap: wrap; /* Разрешаем перенос кнопок */
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.game-button {
-    background: #37374a;
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 14px; /* Уменьшенный размер шрифта для кнопок */
-    padding: 10px 15px; /* Уменьшенные отступы */
-    margin: 5px; /* Уменьшенное расстояние между кнопками */
-    cursor: pointer;
-    transition: background-color 0.3s;
-    flex: 1 1 45%; /* Пропорциональный размер для кнопок */
-    box-sizing: border-box;
-}
-
-.game-button.selected {
-    background-color: #005a56;
-}
-
-.game-button:hover {
-    background-color: #005a56;
-}
-
-.button {
-    width: 100%;
-    padding: 10px; /* Уменьшенный отступ */
-    margin-top: 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #008075;
-    color: #ffffff;
-    font-size: 14px; /* Уменьшенный размер шрифта */
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #005a56;
-}
-
-.key-container {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.key-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #37374a;
-    padding: 10px;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.key-item input {
-    flex-grow: 1;
-    margin: 8px;
-    outline: none;
-    background: transparent;
-    color: #ffffff;
-    font-size: 14px; /* Уменьшенный размер шрифта */
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.copyKeyBtn {
-    background-color: #008075;
-    color: white;
-    border: none;
-    padding: 8px; /* Уменьшенный отступ */
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px; /* Уменьшенный размер шрифта */
-    margin-left: 5px;
-    transition: background-color 0.3s;
-}
-
-.copyKeyBtn:hover {
-    background-color: #005e56;
-}
-
-.hidden {
-    display: none;
-}
-
-.footer-buttons {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    flex-wrap: wrap; /* Разрешаем перенос кнопок */
-}
-
-.footer-button {
-    background-color: #008075;
-    color: white;
-    border: none;
-    padding: 10px; /* Уменьшенный отступ */
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px; /* Уменьшенный размер шрифта */
-    margin: 5px; /* Уменьшенное расстояние между кнопками */
-    transition: background-color 0.3s;
-}
-
-.footer-button:hover {
-    background-color: #005a56;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap; /* Разрешаем перенос кнопок */
-}
-    </style>
+    
 </head>
 <body>
     <div class="container">
@@ -279,41 +98,134 @@ body {
                 copyAllBtn.classList.add('hidden');
 
                 const generateClientId = () => {
-                    // ... (Your generateClientId function remains unchanged)
+                    const timestamp = Date.now();
+                    const randomNumbers = [];
+                    for (let i = 0; i < 19; i++) {
+                        randomNumbers.push(Math.floor(Math.random() * 10));
+                    }
+                    return `${timestamp}-${randomNumbers.join('')}`;
                 };
 
                 const loginClient = async (gameNumber) => {
-                    // ... (Your loginClient function remains unchanged)
+                    const clientId = generateClientId();
+                    const url = 'https://api.gamepromo.io/promo/login-client';
+                    const data = {
+                        appToken: games[gameNumber].appToken,
+                        clientId: clientId,
+                        clientOrigin: 'deviceid'
+                    };
+                    const headers = {
+                        'Content-Type': 'application/json; charset=utf-8',
+                    };
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify(data)
+                        });
+                        const result = await response.json();
+                        if (result.error_code === 'TooManyIpRequest') {
+                            console.log('Too many requests');
+                            await new Promise(resolve => setTimeout(resolve, 10000));
+                            return loginClient(gameNumber);
+                        }
+                        return result.clientToken;
+                    } catch (error) {
+                        return loginClient(gameNumber);
+                    }
                 };
 
                 const registerEvent = async (token, gameNumber) => {
-                    // ... (Your registerEvent function remains unchanged)
+                    await new Promise(resolve => setTimeout(resolve, 20000));
+                    const eventId = generateRandomUUID();
+                    const url = 'https://api.gamepromo.io/promo/register-event';
+                    const data = {
+                        promoId: games[gameNumber].promoId,
+                        eventId: eventId,
+                        eventOrigin: 'undefined'
+                    };
+                    const headers = {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json; charset=utf-8',
+                    };
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify(data)
+                        });
+                        const result = await response.json();
+                        if (!result.hasCode) {
+                            console.log('Retry register event');
+                            return registerEvent(token, gameNumber);
+                        } else {
+                            return token;
+                        }
+                    } catch (error) {
+                        console.error('Fatal error:', error.message);
+                        let newToken = await loginClient(gameNumber);
+                        return registerEvent(newToken, gameNumber);
+                    }
                 };
 
                 const createCode = async (token, gameNumber) => {
-                    // ... (Your createCode function remains unchanged)
+                    let response;
+                    do {
+                        try {
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                            const url = 'https://api.gamepromo.io/promo/create-code';
+                            const data = {
+                                promoId: games[gameNumber].promoId
+                            };
+                            const headers = {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json; charset=utf-8',
+                            };
+                            response = await fetch(url, {
+                                method: 'POST',
+                                headers: headers,
+                                body: JSON.stringify(data)
+                            });
+                            const result = await response.json();
+                            if (result.promoCode) {
+                                return result.promoCode;
+                            }
+                        } catch (error) {
+                            console.error('Fatal error:', error.message);
+                        }
+                    } while (!response || !response.promoCode);
                 };
 
                 const generateRandomUUID = () => {
-                    // ... (Your generateRandomUUID function remains unchanged)
+                    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+                        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+                    );
                 };
 
                 const endGenerateTime = Date.now() + 4 * 40 * 1000;
                 const updateProgress = () => {
-                    // ... (Your updateProgress function remains unchanged)
+                    const now = new Date();
+                    const distance = endGenerateTime - now.getTime();
+                    const progress = Math.max(0, (1 - distance / (4 * 40 * 1000)) * 100).toFixed(2);
+                    progressBar.style.width = progress + '%';
+                    progressText.innerText = `${progress}%`;
+
+                    if (distance < 0) {
+                        clearInterval(progressInterval);
+                        progressBar.style.width = '100%';
+                        progressText.innerText = '100%';
+                        startBtn.disabled = false;
+                    }
                 };
                 const progressInterval = setInterval(updateProgress, 1000);
 
                 const tasks = [];
-                let allKeys = ''; // To store all keys for the file
-
                 for (let i = 0; i < 4; i++) {
                     tasks.push((async (index) => {
                         try {
                             let token = await loginClient(currentGameNumber);
                             let registerToken = await registerEvent(token, currentGameNumber);
                             const promoCode = await createCode(registerToken, currentGameNumber);
-                            allKeys += `${promoCode}\n`; // Add key to the file content
                             const keyDiv = document.createElement('div');
                             keyDiv.classList.add('key-item');
                             keyDiv.innerHTML = `
@@ -327,15 +239,6 @@ body {
                     })(i));
                 }
                 await Promise.all(tasks);
-
-                // Automatically download the file after generating all keys
-                const blob = new Blob([allKeys], { type: 'text/plain' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = `generated_keys_${new Date().toISOString().slice(0, 10)}.txt`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
 
                 copyAllBtn.classList.remove('hidden');
                 startBtn.disabled = false;
@@ -357,5 +260,4 @@ body {
         });
     </script>
 </body>
-
   </html>
