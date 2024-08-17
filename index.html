@@ -212,10 +212,10 @@ body {
         </div>
     </div>
     <div class="footer-buttons">
-        <a href="https://t.me/tigraytechc" target="_blank">
+        <a href="https://t.me/hamster_key_v1" target="_blank">
             <button class="footer-button">Channel</button>
         </a>
-        <a href="https://t.me/medhanye7" target="_blank">
+        <a href="https://t.me/hamster_key_v1" target="_blank">
             <button class="footer-button">Admin</button>
         </a>
     </div>
@@ -411,7 +411,7 @@ body {
                             keyDiv.classList.add('key-item');
                             keyDiv.innerHTML = `
                                 <input type="text" value="${promoCode}" readonly />
-                                <button class="copyKeyBtn" data-clipboard-text="${promoCode}">Copy</button>
+                                <button class="copyKeyBtn" data-clipboard-text="${promoCode}"></button>
                             `;
                             keysList.appendChild(keyDiv);
                         } catch (error) {
@@ -433,7 +433,9 @@ body {
                     });
                 });
 
-                
+                copyAllBtn.addEventListener('click', () => {
+                    const allKeys = [...document.querySelectorAll('.key-item input')].map(input => input.value).join('\n');
+                    navigator.clipboard.writeText(allKeys);
                 });
             });
         });
